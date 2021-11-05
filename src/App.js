@@ -25,6 +25,7 @@ function App() {
           
         <Route path='*' element={<AllTasks/>} />
 
+
       </Routes>
     </>
   );
