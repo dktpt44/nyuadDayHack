@@ -1,15 +1,32 @@
+import React from 'react';
+import { Route, Routes, Navigate } from 'react-router';
 
 import './App.css';
+import { Button } from 'reactstrap';
+
+import Header from './Components/Header';
+import AllTasks from './Pages/AllTasks';
+import MyTasks from './Pages/MyTasks';
+import PostATask from './Pages/PostATask';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <>
+    <Header/>
 
-        Hola nerds. did it work?
+      <Routes >
+        <Route path='/' element={<Navigate to="alltasks"/>}/>
 
-      </header>
-    </div>
+        <Route path="alltasks" element={<AllTasks />}/>
+          
+        <Route path="mytasks" element={<MyTasks />}/>
+          
+        <Route path="postatask" element={<PostATask />}/>
+          
+        <Route path='*' element={<AllTasks/>} />
+
+      </Routes>
+    </>
   );
 }
 

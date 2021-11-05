@@ -1,0 +1,47 @@
+.headbg {
+  background-color: #57068c;
+  padding: 18px 0px 16px 0px;
+  font-size: 1.05em;
+  font-weight: 600;
+}
+
+.navItm {
+  font-size: 1.06em;
+  letter-spacing: -0.1px;
+  font-weight: 500;
+  color: rgb(172, 172, 172) !important;
+}
+.navbar-nav .active {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  border-bottom: 2.5px solid #68ff6d;
+
+}
+@media (max-width: 992px) {
+  .navItm {
+    margin-left: 0px;
+    font-size: 1em;
+    font-weight: 500;
+  }
+}
+@media (max-width: 768px) {
+  .navItm {
+    margin-left: 0px;
+    font-size: 1em;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+  }
+}
+.navItm:hover {
+  color: white !important;
+}
+@media only screen and (max-width: 769px) {
+  .collapsebg {
+    background-color: black;
+    margin-top: 10px;
+    align-items: center;
+  }
+  .navbar-nav .active {
+    background-color: none !important;
+  }
+}
