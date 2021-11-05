@@ -1,11 +1,14 @@
-import { Form, FormGroup, Label, Input, Row, Col, Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
+import { Spinner, Form, FormGroup, Label, Input, Row, Col, Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 import { useState } from 'react';
-
 import './postatask.css';
+
+const FIREBASE_DOMAIN = 'https://nyuaddayhackathon-default-rtdb.firebaseio.com/';
+
 const PostATask = () => {
 
   const [isInvalid, setIsinvalid] = useState(false);
   const [isModelOpen, setModelOpen] = useState(false);
+  const [showLoading, setShowLoading] = useState(false);
   const [state, setState] = useState({
     emailVal: '', nameVal: '', titleVal: '', dueDateVal: '', descriptionVal: '', offerVal: '',
   });
@@ -20,16 +23,28 @@ const PostATask = () => {
     }));
   }
 
+
   function handleSubmit(event) {
     event.preventDefault();
     if (state.emailVal === '' || state.titleVal === '' || state.offerVal === '') {
       setIsinvalid(true);
       return;
     }
-    console.log(state);
+    setModelOpen(true);
+    setShowLoading(true);
+
 
     // TODO: send data to database
-    setModelOpen(true);
+    fetch(`${FIREBASE_DOMAIN}/alltasks.json`, {
+      method: 'POST',
+      body: JSON.stringify(state),
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }).then(response => response.json()).then(() => setShowLoading(false)).catch(() => {
+      console.log("ERRor!");
+    });
+
 
   }
 
@@ -119,7 +134,12 @@ const PostATask = () => {
 
       <Modal isOpen={isModelOpen}>
         <ModalBody>
-          Congratulations, request posted.
+          {showLoading && <Spinner
+            color="success" className="spinnerMid"
+            size="" children="" />}
+          
+          {!showLoading && <span>Congratulations, request posted.</span>}
+          
         </ModalBody>
         <ModalFooter>
           <Button

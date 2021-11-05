@@ -27,3 +27,11 @@
 .paddleftx{
   padding-left: 24px;
 }
+
+.reqStatus {
+  background-color: rgb(5, 189, 5);
+  border-radius: 4px;
+  padding: 4px 6px;
+  color: white;
+  font-weight: 600;
+}
