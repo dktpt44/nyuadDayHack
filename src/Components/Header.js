@@ -33,6 +33,9 @@ const Header = (props) => {
               <NavLink className="nav-link navItm" to="/mytasks" onClick={toggleNav}> My tasks
               </NavLink>
 
+              <NavLink className="nav-link navItm" to="/mywork" onClick={toggleNav}> Work
+              </NavLink>
+
             </Nav>
           </Collapse>
         </div>

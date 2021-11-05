@@ -1,0 +1,13 @@
+.liItemReq{
+  padding: 10px;
+  background-color: rgb(235, 235, 235);
+  border-radius: 4px;
+  margin-bottom: 18px;
+  margin-top: 8px;
+  list-style: none;
+}
+.myacptBtn{
+  margin-top: 14px;
+  margin-bottom: 8px;
+  font-size: 16px;
+}

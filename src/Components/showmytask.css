@@ -1,0 +1,29 @@
+.paddingDiv {
+  padding: 0 0 16px 16px;
+}
+.paddingDiv2, .offerxxx {
+  padding: 0px 16px 16px;
+}
+.taskDueDate{
+  font-size: 14px;
+  color: rgb(85, 85, 85);
+}
+
+.myTasksDivvvx{
+  background-color: rgb(255, 255, 255);
+  border-radius: 4px;
+  padding: 10px 0 6px 12px;
+  margin-bottom: 24px;
+  width: 80%;
+}
+.reqLen{
+  background-color: red;
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 1px 4.5px;
+  border-radius: 50%;
+}
+.paddleftx{
+  padding-left: 24px;
+}
