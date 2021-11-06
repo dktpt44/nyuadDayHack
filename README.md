@@ -3,6 +3,7 @@
 <p align="center">
 helpAD is a platform for students to collaborate as both employers and employees for short term jobs. Students looking for help can post their tasks and offer exciting rewards up-for-grab, and students looking to earn some sweet sweet moola can join!
 </p>
+
 ## Members 
 Dhurba Tripathi, Chunting Liu, Nghia Tri Nim, Ziyad Fawzy
 
