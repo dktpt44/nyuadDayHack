@@ -7,7 +7,7 @@ Dhurba Tripathi, Chunting Liu, Nghia Tri Nim, Ziyad Fawzy
 
 ## Link
 
-- [Our website](https://nyuaddayhackathon.web.app/)
+- [Our website](https://nyuaddayhackathon.web.app/alltasks)
 
 ## Our motivation
 
