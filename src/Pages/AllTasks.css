@@ -1,3 +1,19 @@
 h3{
   padding: 25px 12px;
 }
+h4 {
+  display: block;
+}
+.formHeadding{
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.inputClss {
+  width: 60%;
+  margin-bottom: 16px;
+}
+.submitBtn{
+  margin-bottom: 28px;
+}

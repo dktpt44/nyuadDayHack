@@ -12,3 +12,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.spinnerMid{
+  text-align: center;
+  height: 80px;
+  width: 80px;
+
+}
+.centerDiv {
+  width: 100%;
+}
+.centarize{
+  height: 80px;
+  width: 80px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}

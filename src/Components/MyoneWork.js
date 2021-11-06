@@ -1,7 +1,6 @@
 import './showmytask.css';
 
 const MyoneWork = (props) => {
-  const allRequests = props.requests;
 
   return (
     <div className="container">

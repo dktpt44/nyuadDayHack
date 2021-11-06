@@ -1,5 +1,6 @@
-import { Spinner, Form, FormGroup, Label, Input, Row, Col, Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
+import { Form, FormGroup, Label, Input, Row, Col, Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 import { useState } from 'react';
+import MySpinner from '../Components/MySpinner';
 import './postatask.css';
 
 const FIREBASE_DOMAIN = 'https://nyuaddayhackathon-default-rtdb.firebaseio.com/';
@@ -129,14 +130,11 @@ const PostATask = () => {
           </Form>
         </div>
 
-
       </div>
 
       <Modal isOpen={isModelOpen}>
         <ModalBody>
-          {showLoading && <Spinner
-            color="success" className="spinnerMid"
-            size="" children="" />}
+          {showLoading && <MySpinner/> }
           
           {!showLoading && <span>Congratulations, request posted.</span>}
           

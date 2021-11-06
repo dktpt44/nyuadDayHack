@@ -1,6 +1,5 @@
 import { Nav, Navbar, NavbarToggler, Collapse } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
-import logoImg from '../assets/logo.jpg';
 import { useState } from 'react';
 import './header.css';
 
@@ -30,7 +29,7 @@ const Header = (props) => {
               <NavLink className="nav-link navItm" to="/postatask" onClick={toggleNav}> Post a task
               </NavLink>
 
-              <NavLink className="nav-link navItm" to="/mytasks" onClick={toggleNav}> My tasks
+              <NavLink className="nav-link navItm" to="/mytasks" onClick={toggleNav}> My Requests
               </NavLink>
 
               <NavLink className="nav-link navItm" to="/mywork" onClick={toggleNav}> Work

@@ -2,7 +2,7 @@ import './showmytask.css';
 import RequestLayout from '../Components/RequestLayout';
 
 const ShowMyTask = (props) => {
-  const allRequests = props.requests;
+  const allRequests = props.requests[0];
 
   return (
     <div className="container">
@@ -32,7 +32,7 @@ const ShowMyTask = (props) => {
           <div className="col-12"><b>Requests:</b>&nbsp;<span className="reqLen">{allRequests.length}</span>
             <div className="col-12 paddleftx">
               <ul>
-                {allRequests.map((oneReq)=>(<RequestLayout key={oneReq.email} name={oneReq.name} email={oneReq.email} hisoffer={oneReq.hisoffer} hisdescription={oneReq.hisdescription}/>))}
+                {allRequests.map((oneReq)=>(<RequestLayout key={oneReq.reqemailVal} name={oneReq.reqnameVal} email={oneReq.reqemailVal} hisoffer={oneReq.reqofferVal} hisdescription={oneReq.reqdescriptionVal}/>))}
               </ul>
             </div>
           </div>

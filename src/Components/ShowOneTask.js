@@ -1,16 +1,20 @@
 import { useState } from 'react';
 import { Button, Collapse, Row, Col, Form, FormGroup, Label, Input, Card, CardBody, ModalHeader, Modal, ModalBody, ModalFooter } from 'reactstrap';
+import MySpinner from '../Components/MySpinner';
 
 import './showonetask.css';
+
+const FIREBASE_DOMAIN = 'https://nyuaddayhackathon-default-rtdb.firebaseio.com/';
 
 const ShowOneTask = (props) => {
 
   const [collapseIsopen, setCollapseOpen] = useState(false);
   const [isModelOpen, setModelOpen] = useState(false);
   const [isInvalid, setIsinvalid] = useState(false);
+  const [showLoading, setShowLoading] = useState(false);
 
   const [state, setState] = useState({
-    nameVal: '', emailVal: '', descriptionVal: '', offerVal: '',
+    reqnameVal: '',taskId:'',  reqemailVal: '', reqdescriptionVal: '', reqofferVal: '',taskName:'',taskDueDate:'', reqStatusVal:'pending'
   });
   function handleInputChange(event) {
     setIsinvalid(false);
@@ -18,22 +22,36 @@ const ShowOneTask = (props) => {
     const value = event.target.value;
     setState(prevState => ({
       ...prevState,
+      taskId:props.taskId,
+      taskName:props.titleVal,
+      taskDueDate:props.dueDateVal,
       [name]: value
     }));
   }
   function handleSubmit(event) {
     event.preventDefault();
-    if (state.emailVal === '' || state.titleVal === '' || state.offerVal === '') {
+    if (state.reqemailVal === '' || state.reqtitleVal === '' || state.reqofferVal === '') {
       setIsinvalid(true);
       return;
     }
-    console.log(state);
 
     // TODO: send data to database
-    setState({
-      nameVal: '', emailVal: '', descriptionVal: '', offerVal: '',
+    fetch(`${FIREBASE_DOMAIN}/allrequests.json`, {
+      method: 'POST',
+      body: JSON.stringify(state),
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }).then(response => response.json()).then(() => {setShowLoading(false);
+      setModelOpen(false);}).catch(() => {
+      console.log("ERRor!");
+      setModelOpen(false);
     });
-    setModelOpen(false);
+
+    setState({
+      reqnameVal: '', reqemailVal: '', reqdescriptionVal: '', reqofferVal: '',taskName:'',taskDueDate:'', reqStatusVal:'pending'
+    });
+    
 
   }
 
@@ -42,8 +60,8 @@ const ShowOneTask = (props) => {
     <div className="container">
 
       <div className="taskDiv" onClick={() => {
-                setCollapseOpen(!collapseIsopen);
-              }}>
+        setCollapseOpen(!collapseIsopen);
+      }}>
 
         <div className="taskHeader row">
           <div className="taskName col-md-7">
@@ -126,19 +144,19 @@ const ShowOneTask = (props) => {
             <Row>
               <Col md={6}>
                 <FormGroup >
-                  <Label for="nameVal">
+                  <Label for="reqnameVal">
                     Name *
                   </Label>
-                  <Input name="nameVal" invalid={isInvalid} onChange={handleInputChange} value={state.nameVal} />
+                  <Input name="reqnameVal" invalid={isInvalid} onChange={handleInputChange} value={state.reqnameVal} />
 
                 </FormGroup>
               </Col>
               <Col md={6}>
                 <FormGroup>
-                  <Label for="emailVal">
+                  <Label for="reqemailVal">
                     Email *
                   </Label>
-                  <Input name="emailVal" invalid={isInvalid} onChange={handleInputChange} value={state.emailVal} />
+                  <Input name="reqemailVal" invalid={isInvalid} onChange={handleInputChange} value={state.reqemailVal} />
 
                 </FormGroup>
 
@@ -147,10 +165,10 @@ const ShowOneTask = (props) => {
             <Row>
               <Col md={12}>
                 <FormGroup >
-                  <Label for="offerVal">
+                  <Label for="reqofferVal">
                     Offer *
                   </Label>
-                  <Input name="offerVal" invalid={isInvalid} onChange={handleInputChange} value={state.offerVal} />
+                  <Input name="reqofferVal" invalid={isInvalid} onChange={handleInputChange} value={state.reqofferVal} />
 
                 </FormGroup>
               </Col>
@@ -159,19 +177,20 @@ const ShowOneTask = (props) => {
             <Row>
               <Col md={12}>
                 <FormGroup >
-                  <Label for="descriptionVal">
-                    Description 
+                  <Label for="reqdescriptionVal">
+                    Description
                   </Label>
-                  <Input name="descriptionVal" onChange={handleInputChange} value={state.descriptionVal} type="textarea" rows="3" />
+                  <Input name="reqdescriptionVal" onChange={handleInputChange} value={state.reqdescriptionVal} type="textarea" rows="3" />
 
                 </FormGroup>
               </Col>
             </Row>
 
           </Form>
+          {showLoading && <MySpinner/> }
         </ModalBody>
         <ModalFooter>
-        <Button
+          <Button
             color="danger"
             onClick={() => {
               setModelOpen(false);
